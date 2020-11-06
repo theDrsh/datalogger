@@ -8,6 +8,6 @@ class HighPrecisTemp():
     self.i2c = i2c_bus
     self.mcp = adafruit_mcp9808.MCP9808(self.i2c)
   def GetTemp(self):
-    self.tempC = self.mcp.temperature
+    self.tempC = self.mcp.temperature - 5
     self.tempF = self.tempC * 9 / 5 + 32
     return {"C": self.tempC, "F" : self.tempF}

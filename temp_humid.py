@@ -18,3 +18,6 @@ class TempHumid():
 
   def GetAltitude(self):
     return self.bme680.altitude
+
+  def GetTemperature(self):
+    return self.bme680.temperature + self.temperature_offset

@@ -25,6 +25,9 @@ class Oled():
     image = Image.new("1", (self.oled.width, self.oled.height))
     draw = ImageDraw.Draw(image)
     (font_width, font_height) = self.font.getsize(text)
+    if len(text) <= 0:
+      print("Length of text too short: %d"%(len(text)))
+      return
     char_size = font_width // len(text)
     chars_avail = self.oled.width // char_size
     if font_width > self.oled.width:
@@ -34,7 +37,7 @@ class Oled():
     else:
       i = 0
       for line in self.text:
-        draw.text((0, (font_height/2) * i), line, font=self.font, fill=255)
+        draw.text((5, (font_height/2) * i), line, font=self.font, fill=255)
         i+=2
       self.text[line_num] = text
       self.oled.image(image)
